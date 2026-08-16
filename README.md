@@ -2,8 +2,6 @@
 
 ### exploring risk, return, and market behavior in technology markets
 
-![Dashboard Preview](docs/priced_in_dashboard.png)
-
 An interactive data science project analyzing the historical stock performance of eight leading technology companies between **2020 and 2025**.
 
 Using financial data, statistical analysis, and interactive visualization, this project examines how market leaders balance **growth, volatility, and downside risk**. The dashboard transforms historical stock prices into insights about investment performance and risk behavior.
@@ -82,16 +80,18 @@ While this project analyzes historical market behavior, past performance does no
 
 ## Repository Structure
 
+```text
 priced-in/
+│
 ├── data/
 │   ├── raw/
 │   └── processed/
 │
 ├── notebooks/
 │   ├── 01_data_collection.ipynb
-│   ├── 02_data_cleaning.ipynb
-│   ├── 03_analysis.ipynb
-│   └── 04_insights.ipynb
+│   ├── 02_exploratory_analysis.ipynb
+│   ├── 03_risk_and_market_insights.ipynb
+│   └── 04_methodology_and_limitations.ipynb
 │
 ├── docs/
 │   ├── index.html
@@ -102,6 +102,7 @@ priced-in/
 │   └── maximum_drawdown.png
 │
 └── README.md
+```
 ---
 
 ## Future Improvements
