@@ -1,0 +1,1154 @@
+/* =========================================================
+   PRICED IN
+   cyberpunk financial terminal theme
+   ========================================================= */
+
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
+
+    color: #eaf7ff;
+
+    background:
+        radial-gradient(
+            circle at 15% 12%,
+            rgba(0, 132, 255, 0.20),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 88% 25%,
+            rgba(0, 229, 255, 0.10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 55% 72%,
+            rgba(36, 73, 180, 0.09),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #010308 0%,
+            #030711 45%,
+            #010207 100%
+        );
+
+    position: relative;
+}
+
+
+/* =========================================================
+   GLOBAL CYBER GRID
+   ========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(35, 145, 255, 0.065) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(35, 145, 255, 0.065) 1px,
+            transparent 1px
+        );
+
+    background-size: 34px 34px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            rgba(0, 0, 0, 0.65) 65%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   ANIMATED SCAN LINE
+   ========================================================= */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    left: 0;
+    top: -10%;
+
+    width: 100%;
+    height: 90px;
+
+    pointer-events: none;
+
+    z-index: 999;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(0, 217, 255, 0.025),
+            rgba(0, 217, 255, 0.08),
+            transparent
+        );
+
+    animation: scanPage 9s linear infinite;
+}
+
+@keyframes scanPage {
+
+    0% {
+        transform: translateY(-150px);
+    }
+
+    100% {
+        transform: translateY(calc(100vh + 250px));
+    }
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    min-height: 92vh;
+
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 110px 48px 70px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+    z-index: 1;
+
+    border-left: 1px solid rgba(79, 190, 255, 0.10);
+    border-right: 1px solid rgba(79, 190, 255, 0.10);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(4, 14, 29, 0.28),
+            rgba(2, 7, 18, 0.12)
+        );
+
+    box-shadow:
+        inset 0 0 100px rgba(0, 110, 255, 0.035),
+        0 0 140px rgba(0, 132, 255, 0.025);
+}
+
+
+/* glowing hero atmosphere */
+
+.hero-glow {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    left: -180px;
+    top: 10%;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 174, 255, 0.13),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    animation: heroPulse 6s ease-in-out infinite;
+}
+
+@keyframes heroPulse {
+
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.08);
+    }
+}
+
+
+/* top neon line */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    top: 62px;
+    left: 48px;
+
+    width: 150px;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00e5ff,
+            rgba(0, 229, 255, 0)
+        );
+
+    box-shadow:
+        0 0 8px #00e5ff,
+        0 0 24px rgba(0, 229, 255, 0.50);
+
+    animation: heroLine 3s ease-in-out infinite;
+}
+
+@keyframes heroLine {
+
+    0%,
+    100% {
+        width: 110px;
+        opacity: 0.6;
+    }
+
+    50% {
+        width: 180px;
+        opacity: 1;
+    }
+}
+
+
+/* system status */
+
+.hero::after {
+    content: "MARKET_DATA // SYSTEM ONLINE // 2020—2025";
+
+    position: absolute;
+
+    right: 48px;
+    bottom: 34px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 0.66rem;
+
+    letter-spacing: 2.2px;
+
+    color: #356584;
+}
+
+
+/* eyebrow */
+
+.eyebrow {
+    margin-bottom: 24px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 0.75rem;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: #56dcff;
+
+    text-shadow:
+        0 0 8px rgba(86, 220, 255, 0.55),
+        0 0 20px rgba(0, 196, 255, 0.15);
+}
+
+
+/* main title */
+
+.hero h1 {
+    max-width: 100%;
+
+    margin-bottom: 34px;
+
+    font-size: clamp(5rem, 12vw, 9.5rem);
+
+    line-height: 0.88;
+
+    letter-spacing: -7px;
+
+    color: #f7fdff;
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.22),
+        0 0 18px rgba(65, 190, 255, 0.60),
+        0 0 42px rgba(28, 152, 255, 0.30),
+        0 0 90px rgba(0, 128, 255, 0.12);
+}
+
+
+/* hero subtitle */
+
+.subtitle {
+    max-width: 780px;
+
+    margin-bottom: 28px;
+
+    font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+
+    line-height: 1.45;
+
+    color: #64dcff;
+
+    text-shadow:
+        0 0 12px rgba(46, 200, 255, 0.22);
+}
+
+
+/* hero description */
+
+.intro {
+    max-width: 760px;
+
+    font-size: 1.03rem;
+
+    line-height: 1.9;
+
+    color: #9fb4c8;
+}
+
+
+/* scroll indicator */
+
+.scroll-indicator {
+    margin-top: 58px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 2px;
+
+    color: #456d88;
+}
+
+.scroll-indicator span {
+    width: 55px;
+    height: 1px;
+
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d9ff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px rgba(0, 217, 255, 0.45);
+
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+
+    0%,
+    100% {
+        width: 38px;
+        opacity: 0.5;
+    }
+
+    50% {
+        width: 65px;
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MAIN SECTIONS
+   ========================================================= */
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+.section {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 78px 48px 92px;
+
+    position: relative;
+
+    border-left: 1px solid rgba(79, 190, 255, 0.08);
+    border-right: 1px solid rgba(79, 190, 255, 0.08);
+}
+
+
+/* neon divider */
+
+.section::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 48px;
+
+    width: 210px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00e5ff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px rgba(0, 229, 255, 0.70),
+        0 0 28px rgba(0, 229, 255, 0.28);
+
+    animation: dividerPulse 4s ease-in-out infinite;
+}
+
+@keyframes dividerPulse {
+
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scaleX(0.75);
+        transform-origin: left;
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+
+/* section number */
+
+.section-number {
+    margin-bottom: 8px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 0.7rem !important;
+
+    letter-spacing: 4px;
+
+    color: #285470 !important;
+}
+
+
+/* section label */
+
+.section-label {
+    margin-bottom: 28px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 0.76rem !important;
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    color: #51dbff !important;
+
+    text-shadow:
+        0 0 8px rgba(81, 219, 255, 0.30);
+}
+
+
+/* section heading */
+
+.section h2 {
+    max-width: 1000px;
+
+    margin-bottom: 30px;
+
+    font-size: clamp(2rem, 4.5vw, 3.6rem);
+
+    line-height: 1.12;
+
+    letter-spacing: -1.5px;
+
+    color: #f5fbff;
+}
+
+
+/* regular section text */
+
+.section > p:not(.section-number):not(.section-label) {
+    max-width: 780px;
+
+    font-size: 1.06rem;
+
+    line-height: 1.9;
+
+    color: #aabed0;
+}
+
+
+/* =========================================================
+   COMPANY GRID
+   ========================================================= */
+
+.company-grid {
+    margin-top: 42px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+/* company cards */
+
+.company-card {
+    min-height: 150px;
+
+    padding: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    position: relative;
+
+    overflow: hidden;
+
+    cursor: default;
+
+    border:
+        1px solid rgba(78, 190, 255, 0.16);
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 26, 48, 0.65),
+            rgba(3, 9, 22, 0.74)
+        );
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        inset 0 0 24px rgba(0, 124, 255, 0.025);
+
+    transition:
+        transform 0.32s ease,
+        border-color 0.32s ease,
+        box-shadow 0.32s ease,
+        background 0.32s ease;
+}
+
+
+/* animated line inside cards */
+
+.company-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00dcff,
+            transparent
+        );
+
+    transform: translateX(-100%);
+
+    transition: transform 0.6s ease;
+}
+
+
+/* corner glow */
+
+.company-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    right: -50px;
+    bottom: -50px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 176, 255, 0.15);
+
+    filter: blur(28px);
+
+    opacity: 0;
+
+    transition: opacity 0.35s ease;
+}
+
+
+.company-card:hover {
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(70, 215, 255, 0.50);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 35, 65, 0.85),
+            rgba(2, 10, 24, 0.82)
+        );
+
+    box-shadow:
+        0 14px 45px rgba(0, 130, 255, 0.08),
+        inset 0 0 35px rgba(0, 174, 255, 0.045);
+}
+
+.company-card:hover::before {
+    transform: translateX(100%);
+}
+
+.company-card:hover::after {
+    opacity: 1;
+}
+
+.company-card h3 {
+    font-size: 1.22rem;
+
+    font-weight: 600;
+
+    color: #effaff;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+.company-card:hover h3 {
+    color: #66e1ff;
+
+    text-shadow:
+        0 0 12px rgba(77, 218, 255, 0.35);
+}
+
+.company-card p {
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 0.69rem;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: #627f96;
+}
+
+
+/* =========================================================
+   DASHBOARD METRICS
+   ========================================================= */
+
+.metrics {
+    margin-top: 42px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* individual metric */
+
+.metric {
+    min-height: 220px;
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(79, 195, 255, 0.18);
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(5, 21, 40, 0.82),
+            rgba(2, 7, 17, 0.84)
+        );
+
+    box-shadow:
+        inset 0 0 60px rgba(0, 125, 255, 0.025);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.metric::before {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    right: -70px;
+    top: -70px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 179, 255, 0.11);
+
+    filter: blur(40px);
+
+    transition:
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.metric::after {
+    content: "DATA";
+
+    position: absolute;
+
+    right: 18px;
+    top: 16px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 2px;
+
+    color: #274c63;
+}
+
+
+.metric:hover {
+    transform: translateY(-6px);
+
+    border-color:
+        rgba(82, 222, 255, 0.55);
+
+    box-shadow:
+        0 20px 55px rgba(0, 145, 255, 0.08),
+        inset 0 0 80px rgba(0, 172, 255, 0.035);
+}
+
+
+.metric:hover::before {
+    background:
+        rgba(0, 208, 255, 0.18);
+
+    transform: scale(1.15);
+}
+
+
+/* huge dashboard number */
+
+.metric-value {
+    margin-bottom: 18px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: clamp(2.8rem, 5vw, 4.3rem);
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+
+    color: #eafbff;
+
+    text-shadow:
+        0 0 12px rgba(76, 211, 255, 0.22),
+        0 0 30px rgba(0, 158, 255, 0.10);
+}
+
+
+/* metric description */
+
+.metric-title {
+    margin-bottom: 7px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: 0.65rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: #5c839c;
+}
+
+.metric-company {
+    font-size: 1.1rem;
+
+    font-weight: 500;
+
+    color: #54d9ff;
+}
+
+
+/* =========================================================
+   KEY FINDINGS
+   ========================================================= */
+
+.findings {
+    max-width: 900px;
+
+    margin-top: 38px;
+
+    list-style: none;
+
+    display: grid;
+
+    gap: 14px;
+}
+
+.findings li {
+    padding: 20px 22px 20px 52px;
+
+    position: relative;
+
+    line-height: 1.7;
+
+    color: #adc0d1;
+
+    border:
+        1px solid rgba(72, 170, 230, 0.10);
+
+    border-radius: 4px;
+
+    background:
+        rgba(5, 16, 31, 0.45);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.findings li::before {
+    content: ">";
+
+    position: absolute;
+
+    left: 22px;
+    top: 20px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    color: #43d8ff;
+
+    text-shadow:
+        0 0 8px rgba(67, 216, 255, 0.50);
+}
+
+.findings li:hover {
+    transform: translateX(6px);
+
+    border-color:
+        rgba(80, 217, 255, 0.28);
+
+    background:
+        rgba(5, 27, 48, 0.62);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: 0 auto;
+
+    padding: 45px 48px 65px;
+
+    border-left:
+        1px solid rgba(79, 190, 255, 0.08);
+
+    border-right:
+        1px solid rgba(79, 190, 255, 0.08);
+
+    border-top:
+        1px solid rgba(79, 190, 255, 0.12);
+
+    font-family:
+        "JetBrains Mono", monospace;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #42637a;
+}
+
+
+/* =========================================================
+   SELECTION + SCROLLBAR
+   ========================================================= */
+
+::selection {
+    background: #00d9ff;
+    color: #02050a;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #010308;
+}
+
+::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            180deg,
+            #0b83b8,
+            #10344d
+        );
+
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #19b8ee;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .company-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .metric {
+        min-height: 185px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero,
+    .section,
+    footer {
+        width: 100%;
+
+        border-left: none;
+        border-right: none;
+    }
+
+    .hero {
+        min-height: 92vh;
+
+        padding:
+            95px
+            24px
+            70px;
+    }
+
+    .hero::before {
+        left: 24px;
+        top: 54px;
+
+        width: 100px;
+    }
+
+    .hero::after {
+        left: 24px;
+        right: auto;
+
+        bottom: 24px;
+
+        font-size: 0.55rem;
+
+        letter-spacing: 1.2px;
+    }
+
+    .eyebrow {
+        font-size: 0.64rem;
+
+        letter-spacing: 2.4px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(4rem, 22vw, 6rem);
+
+        letter-spacing: -4px;
+    }
+
+    .subtitle {
+        font-size: 1.15rem;
+    }
+
+    .intro {
+        font-size: 0.96rem;
+
+        line-height: 1.75;
+    }
+
+    .scroll-indicator {
+        margin-top: 40px;
+    }
+
+    .section {
+        padding:
+            62px
+            24px
+            72px;
+    }
+
+    .section::before {
+        left: 24px;
+
+        width: 130px;
+    }
+
+    .section h2 {
+        font-size:
+            clamp(1.9rem, 9vw, 2.7rem);
+
+        letter-spacing: -1px;
+    }
+
+    .section > p:not(.section-number):not(.section-label) {
+        font-size: 0.98rem;
+
+        line-height: 1.75;
+    }
+
+    .company-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .company-card {
+        min-height: 130px;
+    }
+
+    .metric {
+        min-height: 175px;
+    }
+
+    .metric-value {
+        font-size: 3rem;
+    }
+
+    footer {
+        padding:
+            35px
+            24px
+            50px;
+    }
+}
