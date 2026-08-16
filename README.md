@@ -10,7 +10,7 @@ The project explores the relationship between **investment return, market volati
 
 ## Live Website
 
-Coming soon via GitHub Pages.
+https://seryuiroke.github.io/priced-in/
 
 ---
 
