@@ -37,6 +37,19 @@ exploring risk, return, and market behavior
 this project compares eight leading technology companies using historical market data to examine long-term growth, volatility, investment risk, and portfolio performance from 2020 through 2025.
 </p>
 
+<div class="market-ticker">
+
+    <span>AAPL ▲ +186%</span>
+    <span>MSFT ▲ +157%</span>
+    <span>NVDA ▲ +2920%</span>
+    <span>AMD ▲ +620%</span>
+    <span>GOOGL ▲ +128%</span>
+    <span>META ▲ +245%</span>
+    <span>TSLA ▲ +1040%</span>
+    <span>PLTR ▲ +1630%</span>
+
+</div>
+
 <div class="scroll-indicator">
 <span></span>
 SCROLL TO ANALYSIS
@@ -149,19 +162,19 @@ performance snapshot
 <div class="metrics">
 
 <div class="metric">
-<div class="metric-value">29×</div>
+<div class="metric-value" data-target="29" data-suffix="×">0×</div>
 <div class="metric-title">highest return</div>
 <div class="metric-company">NVIDIA</div>
 </div>
 
 <div class="metric">
-<div class="metric-value">0.019</div>
+<div class="metric-value" data-target="0.019" data-decimals="3">0.000</div>
 <div class="metric-title">lowest volatility</div>
 <div class="metric-company">Microsoft</div>
 </div>
 
 <div class="metric">
-<div class="metric-value">−84%</div>
+<div class="metric-value" data-target="-84" data-suffix="%">0%</div>
 <div class="metric-title">largest drawdown</div>
 <div class="metric-company">Palantir</div>
 </div>
@@ -193,18 +206,72 @@ the following visualizations summarize cumulative investment growth, the relatio
 <div class="chart-grid">
 
 <div class="chart-card">
-<h3>growth of $1 invested</h3>
-<img src="growth_of_1.png" alt="Growth of $1 Invested">
+
+    <h3>growth of $1 invested</h3>
+
+    <a href="growth_interactive.html" target="_blank">
+
+        <img
+            src="growth_of_1.png"
+            alt="Growth of $1 Invested">
+
+    </a>
+
+    <a
+        class="chart-button"
+        href="growth_interactive.html"
+        target="_blank">
+
+        open interactive chart →
+
+    </a>
+
 </div>
 
 <div class="chart-card">
-<h3>risk vs return</h3>
-<img src="risk_vs_return.png" alt="Risk vs Return">
+
+    <h3>risk vs return</h3>
+
+    <a href="risk_interactive.html" target="_blank">
+
+        <img
+            src="risk_vs_return.png"
+            alt="Risk vs Return">
+
+    </a>
+
+    <a
+        class="chart-button"
+        href="risk_interactive.html"
+        target="_blank">
+
+        open interactive chart →
+
+    </a>
+
 </div>
 
 <div class="chart-card">
-<h3>maximum drawdown</h3>
-<img src="maximum_drawdown.png" alt="Maximum Drawdown">
+
+    <h3>maximum drawdown</h3>
+
+    <a href="drawdown_interactive.html" target="_blank">
+
+        <img
+            src="maximum_drawdown.png"
+            alt="Maximum Drawdown">
+
+    </a>
+
+    <a
+        class="chart-button"
+        href="drawdown_interactive.html"
+        target="_blank">
+
+        open interactive chart →
+
+    </a>
+
 </div>
 
 </div>
@@ -220,6 +287,88 @@ the following visualizations summarize cumulative investment growth, the relatio
 <p class="section-number">05</p>
 
 <p class="section-label">
+methodology
+</p>
+
+<h2>
+how the analysis was built
+</h2>
+
+<div class="method-grid">
+
+<div class="method-card">
+
+<span>01</span>
+
+<h3>data collection</h3>
+
+<p>
+historical stock market data for eight leading technology companies was collected covering the 2020–2025 period.
+</p>
+
+</div>
+
+<div class="method-card">
+
+<span>02</span>
+
+<h3>data processing</h3>
+
+<p>
+python and pandas were used to clean, organize, and calculate cumulative returns, volatility, and maximum drawdown.
+</p>
+
+</div>
+
+<div class="method-card">
+
+<span>03</span>
+
+<h3>risk analysis</h3>
+
+<p>
+companies were compared using long-term return, annualized volatility, and maximum drawdown to evaluate investment performance.
+</p>
+
+</div>
+
+<div class="method-card">
+
+<span>04</span>
+
+<h3>visualization</h3>
+
+<p>
+matplotlib generated publication-quality figures while plotly created interactive versions for deeper exploration.
+</p>
+
+</div>
+
+</div>
+
+<div class="limitations">
+
+<h3>limitations</h3>
+
+<p>
+
+historical stock performance does not guarantee future returns. this analysis examines only eight companies and does not account for dividends, inflation, taxes, transaction costs, or portfolio rebalancing. differences in company age and market history may also influence comparisons.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ====================== -->
+<!-- 06 -->
+<!-- ====================== -->
+
+<section class="section">
+
+<p class="section-number">06</p>
+
+<p class="section-label">
 key findings
 </p>
 
@@ -229,13 +378,13 @@ major insights
 
 <ul class="findings">
 
-<li>NVIDIA generated the strongest cumulative return over the study period.</li>
+<li>NVIDIA generated the strongest cumulative return across the study period.</li>
 
-<li>Microsoft exhibited the lowest overall volatility.</li>
+<li>Microsoft demonstrated the lowest overall investment volatility.</li>
 
-<li>Palantir experienced the largest maximum drawdown.</li>
+<li>Palantir experienced the largest historical maximum drawdown.</li>
 
-<li>Higher returns were generally accompanied by greater investment risk.</li>
+<li>Higher long-term returns generally coincided with higher investment risk.</li>
 
 </ul>
 
@@ -250,6 +399,60 @@ priced in © 2026
 </p>
 
 </footer>
+
+<script>
+const metrics = document.querySelectorAll(".metric-value");
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+
+        const target = Number(el.dataset.target);
+        const suffix = el.dataset.suffix || "";
+        const decimals = Number(el.dataset.decimals || 0);
+
+        let current = 0;
+        const duration = 1800;
+        const start = performance.now();
+
+        function animate(time){
+
+            const progress = Math.min((time-start)/duration,1);
+
+            current = target * progress;
+
+            el.textContent =
+                current.toFixed(decimals) + suffix;
+
+            if(progress < 1){
+
+                requestAnimationFrame(animate);
+
+            } else {
+
+                el.textContent =
+                    target.toFixed(decimals) + suffix;
+
+            }
+
+        }
+
+        requestAnimationFrame(animate);
+
+        observer.unobserve(el);
+
+    });
+
+},{
+    threshold:0.5
+});
+
+metrics.forEach(metric => observer.observe(metric));
+</script>
 
 </body>
 
